@@ -52,7 +52,7 @@ class Log
     
     SetFormat(format)
     {
-        var FORMAT = String(format).toUpperCase;
+        var FORMAT = String(format).toUpperCase();
         var msg = "Log Format set to ";
         if
         (
@@ -79,7 +79,7 @@ class Log
 
     SetMode(mode)
     {
-        var MODE = String(mode).toUpperCase;
+        var MODE = String(mode).toUpperCase();
         var msg = "Log Mode set to ";
         if      
         (
@@ -107,7 +107,7 @@ class Log
             MODE === "CONSOLEFILE" ||
             MODE === "CF"  || MODE === "FC"
         )
-            this.Logmode = this.Mode["ModeCF"];
+            this.LogMode = this.Mode["ModeCF"];
 
         else if
         (
@@ -133,7 +133,7 @@ class Log
 
         else
         {
-            console.log(mode + " is not a valid mode (Console/File/Database/C(onsole)F(ile)/C(onsole)D(atabase)/F(ile)D(atabase)/C(onsole)F(ile)D(atabase))");
+            console.log(mode + " is not a valid mode ((C)onsole/(F)ile/(D)atabase or combination)");
             return;
         }
 
@@ -151,8 +151,19 @@ class Log
             d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds() + "]";
         }
 
+        var log = timestamp + "[INFO]: " + message;
+
         if(this.LogLevel >= this.Level["LevelError"])
-            console.log( timestamp + "[ERROR]: " + message);
+        {
+            if  //  Log to the console
+            (
+                this.LogMode === this.Mode["ModeConsole"]   ||
+                this.LogMode === this.Mode["ModeCF"]        ||
+                this.LogMode === this.Mode["ModeCD"]        ||
+                this.LogMode === this.Mode["ModeCFD"]
+            )
+                console.log( log );
+        }
             
     }
 
@@ -167,13 +178,25 @@ class Log
             d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds() + "]";
         }
 
+        var log = timestamp + "[INFO]: " + message;
+
         if(this.LogLevel >= this.Level["LevelWarning"])
-            console.log( timestamp + "[WARNING]: " + message);
+        {
+            if  //  Log to the console
+            (
+                this.LogMode === this.Mode["ModeConsole"]   ||
+                this.LogMode === this.Mode["ModeCF"]        ||
+                this.LogMode === this.Mode["ModeCD"]        ||
+                this.LogMode === this.Mode["ModeCFD"]
+            )
+                console.log( log );
+        }    
     }
 
     Info(message)
     {
         var d = new Date();
+        
         var timestamp = "";
         if(this.LogFormat === this.Format["FormatLong"])
         {
@@ -182,8 +205,20 @@ class Log
             d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds() + "]";
         }
 
+        var log = timestamp + "[INFO]: " + message;
+
         if(this.LogLevel >= this.Level["LevelInfo"])
-            console.log( timestamp + "[INFO]: " + message);
+        {
+            if  // Log to the console
+            (
+                this.LogMode === this.Mode["ModeConsole"]   ||
+                this.LogMode === this.Mode["ModeCF"]        ||
+                this.LogMode === this.Mode["ModeCD"]        ||
+                this.LogMode === this.Mode["ModeCFD"]
+            )
+                console.log( log );
+
+        }
     }
 
 }
