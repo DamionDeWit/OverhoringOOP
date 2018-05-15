@@ -2,9 +2,9 @@ var Log = require("./log.js");
 
 var myLog = new Log();
 
-myLog.SetLevel("Info");     // (E)rror, (W)arning, (I)nfo
+myLog.SetLevel("Error");     // (E)rror, (W)arning, (I)nfo
 myLog.SetFormat("L");       // (L)ong, (C)ompact
-myLog.SetMode("C");         // W.I.P. (C)onsole, (F)ile, (D)atabase
+myLog.SetMode("CF");         // W.I.P. (C)onsole, (F)ile, (D)atabase
 
 myLog.Error("hello");
 myLog.Warn("hello");

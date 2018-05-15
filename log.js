@@ -1,3 +1,5 @@
+var fs = require('fs');
+
 class Log
 {
     constructor()
@@ -30,6 +32,8 @@ class Log
         this.m_LogLevel = this.Level["LevelInfo"];
         this.m_LogFormat = this.Format["FormatLong"];
         this.m_LogMode = this.Mode["ModeConsole"];
+
+        this.m_LogFile = "./log.txt"
     }
 
     SetLevel(level)
@@ -186,7 +190,9 @@ class Log
                 this.m_LogMode === this.Mode["ModeCD"]      ||
                 this.m_LogMode === this.Mode["ModeCFD"]
             )
+            {
                 console.log( log );
+            }
 
             if  //  Log to file
             (
@@ -195,8 +201,12 @@ class Log
                 this.m_LogMode === this.Mode["ModeFD"]      ||
                 this.m_LogMode === this.Mode["ModeCFD"]                
             )
-                console.log("W.I.P.");
-            
+            {
+                fs.appendFile(this.m_LogFile, log + '\n' , function(err){
+                    if (err)
+                        return console.log(err);
+                });
+            }
             if  //  Log to database
             (
                 this.m_LogMode === this.Mode["ModeDatabase"]||
@@ -204,7 +214,10 @@ class Log
                 this.m_LogMode === this.Mode["ModeFD"]      ||
                 this.m_LogMode === this.Mode["ModeCFD"]                
             )
+            {
                 console.log("W.I.P.");
+
+            }
 
         }   
     }
