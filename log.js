@@ -142,58 +142,21 @@ class Log
 
     Error(message)
     {
-        var d = new Date();
-        var timestamp = "";
-        if(this.m_LogFormat === this.Format["FormatLong"])
-        {
-            timestamp +=
-            "[" + d.getFullYear() + "-"  + d.getMonth() + "-" + d.getDay() + " " +
-            d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds() + "]";
-        }
-
-        var log = timestamp + "[INFO]: " + message;
-
-        if(this.m_LogLevel >= this.Level["LevelError"])
-        {
-            if  //  Log to the console
-            (
-                this.m_LogMode === this.Mode["ModeConsole"]   ||
-                this.m_LogMode === this.Mode["ModeCF"]        ||
-                this.m_LogMode === this.Mode["ModeCD"]        ||
-                this.m_LogMode === this.Mode["ModeCFD"]
-            )
-                console.log( log );
-        }
-            
+        this._Log(message, this.Level["LevelError"]);
     }
 
     Warn(message)
     {
-        var d = new Date();
-        var timestamp = "";
-        if(this.m_LogFormat === this.Format["FormatLong"])
-        {
-            timestamp +=
-            "[" + d.getFullYear() + "-"  + d.getMonth() + "-" + d.getDay() + " " +
-            d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds() + "]";
-        }
-
-        var log = timestamp + "[INFO]: " + message;
-
-        if(this.m_LogLevel >= this.Level["LevelWarning"])
-        {
-            if  //  Log to the console
-            (
-                this.m_LogMode === this.Mode["ModeConsole"]   ||
-                this.m_LogMode === this.Mode["ModeCF"]        ||
-                this.m_LogMode === this.Mode["ModeCD"]        ||
-                this.m_LogMode === this.Mode["ModeCFD"]
-            )
-                console.log( log );
-        }    
+        this._Log(message, this.Level["LevelWarning"]);
     }
 
     Info(message)
+    {
+        this._Log(message, this.Level["LevelInfo"]);
+    }
+
+    //  Private
+    _Log(message, messageLevel)
     {
         var d = new Date();
         
@@ -205,9 +168,15 @@ class Log
             d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds() + "]";
         }
 
-        var log = timestamp + "[INFO]: " + message;
+        //  Get the right log
+        if (messageLevel === this.Level["LevelError"])
+            var log = timestamp + "[ERROR]: " + message;
+        else if (messageLevel === this.Level["LevelWarning"])
+            var log = timestamp + "[WARNING]: " + message;
+        else if (messageLevel === this.Level["LevelInfo"])
+            var log = timestamp + "[INFO]: " + message;        
 
-        if(this.m_LogLevel >= this.Level["LevelInfo"])
+        if(this.m_LogLevel >= messageLevel)
         {
             if  // Log to the console
             (
@@ -218,7 +187,7 @@ class Log
             )
                 console.log( log );
 
-        }
+        }   
     }
 
 }
