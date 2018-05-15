@@ -29,21 +29,40 @@ class Log
 
     Error(message)
     {
+        var d = new Date();
         if(this.LogLevel >= this.Level["LevelError"])
-            console.log("[ERROR]: " + message);
+            console.log(
+                "[" + 
+                d.getFullYear() + "-"  + d.getMonth() + "-" + d.getDay() + " " +
+                d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds() +
+                "]" 
+                + "[ERROR]: " + message);
     }
 
     Warn(message)
     {
+        var d = new Date();        
         if(this.LogLevel >= this.Level["LevelWarning"])
-            console.log("[WARNING]: " + message);
+        console.log(
+            "[" + 
+            d.getFullYear() + "-"  + d.getMonth() + "-" + d.getDay() + " " +
+            d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds() +
+            "]" 
+            + "[WARNING]: " + message);
     }
 
     Info(message)
     {
+        var d = new Date();        
         if(this.LogLevel >= this.Level["LevelInfo"])
-            console.log("[INFO]: " + message);
+        console.log(
+            "[" + 
+            d.getFullYear() + "-"  + d.getMonth() + "-" + d.getDay() + " " +
+            d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds() +
+            "]" 
+            + "[INFO]: " + message);
     }
+
 }
 
 
