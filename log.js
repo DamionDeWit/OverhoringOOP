@@ -9,10 +9,15 @@ class Log
             LevelInfo: 2
         }
 
+        this.Format = 
+        {
+            FormatCompact: 0,
+            FormatLong: 1
+        }
+
         this.LogLevel = this.Level["LevelInfo"];
+        this.LogFormat = this.Format["FormatLong"];
     }
-
-
 
     SetLevel(level)
     {
@@ -24,43 +29,59 @@ class Log
             this.LogLevel = this.Level["LevelInfo"];
         
         else
-            console.log(level + " is not a valid level");
+            console.log(level + " is not a valid level (Compact/Long)");
+    }
+
+    SetFormat(format)
+    {
+        if      (format === "Compact")
+            this.LogFormat = this.Format["FormatCompact"];
+        else if (format === "Long")
+            this.LogFormat = this.Format["FormatLong"];
+
+        else
+            console.log(format + " Is not a valid format (Compact/Long)");
     }
 
     Error(message)
     {
         var d = new Date();
+        var timestamp = 
+            "[" + 
+            d.getFullYear() + "-"  + d.getMonth() + "-" + d.getDay() + " " +
+            d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds() +
+            "]"
+
         if(this.LogLevel >= this.Level["LevelError"])
-            console.log(
-                "[" + 
-                d.getFullYear() + "-"  + d.getMonth() + "-" + d.getDay() + " " +
-                d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds() +
-                "]" 
-                + "[ERROR]: " + message);
+            console.log( timestamp + "[ERROR]: " + message);
+            
     }
 
     Warn(message)
     {
-        var d = new Date();        
-        if(this.LogLevel >= this.Level["LevelWarning"])
-        console.log(
+        var d = new Date();
+        var timestamp = 
             "[" + 
             d.getFullYear() + "-"  + d.getMonth() + "-" + d.getDay() + " " +
             d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds() +
-            "]" 
-            + "[WARNING]: " + message);
+            "]"
+
+        if(this.LogLevel >= this.Level["LevelWarning"])
+            console.log( timestamp + "[WARNING]: " + message);
     }
 
     Info(message)
     {
-        var d = new Date();        
-        if(this.LogLevel >= this.Level["LevelInfo"])
-        console.log(
+        var d = new Date();
+        var timestamp = 
             "[" + 
             d.getFullYear() + "-"  + d.getMonth() + "-" + d.getDay() + " " +
             d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds() +
-            "]" 
-            + "[INFO]: " + message);
+            "]"
+
+        if(this.LogLevel >= this.Level["LevelInfo"])
+            console.log( timestamp + "[INFO]: " + message);
+
     }
 
 }
