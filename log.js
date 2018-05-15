@@ -52,10 +52,20 @@ class Log
     
     SetFormat(format)
     {
-        var msg = "Log Format set to ";        
-        if      (format === "Compact")
+        var FORMAT = String(format).toUpperCase;
+        var msg = "Log Format set to ";
+        if
+        (
+            FORMAT === "COMPACT" ||
+            FORMAT === "C"
+        )
             this.LogFormat = this.Format["FormatCompact"];
-        else if (format === "Long")
+        
+        else if
+        (
+            FORMAT === "LONG" ||
+            FORMAT === "L"
+        )
             this.LogFormat = this.Format["FormatLong"];
 
         else
@@ -69,7 +79,7 @@ class Log
 
     SetMode(mode)
     {
-        MODE = String(mode).toUpperCase;
+        var MODE = String(mode).toUpperCase;
         var msg = "Log Mode set to ";
         if      
         (
@@ -94,27 +104,27 @@ class Log
 
         else if 
         (
-            MODE === "ConsoleFile" ||
-            MODE === "CF"  || mode === "FC"
+            MODE === "CONSOLEFILE" ||
+            MODE === "CF"  || MODE === "FC"
         )
             this.Logmode = this.Mode["ModeCF"];
 
         else if
         (
-            MODE === "ConsoleDatabase" ||
+            MODE === "CONSOLEDATABASE" ||
             MODE === "CD"  || MODE === "DC"
         )
             this.LogMode = this.Mode["ModeCD"];
 
         else if
         (
-            MODE === "FileDatabase" ||
+            MODE === "FILEDATABASE" ||
             MODE === "FD"  || MODE === "DF"
         )
             this.LogMode = this.Mode["ModeFD"];        
         else if
         (
-            MODE === "ConsoleFileDatabase"   ||
+            MODE === "CONSOLEFILEDATABASE"   ||
             MODE === "CFD" || MODE === "CDF" ||
             MODE === "FCD" || MODE === "FDC" ||
             MODE === "DCF" || MODE === "DFC"  
