@@ -1,0 +1,6 @@
+[2018-4-2 22:28:8][ERROR]: This
+[2018-4-2 22:28:8][WARNING]: Should
+[2018-4-2 22:28:8][INFO]: Be working
+[2018-4-2 22:31:1][ERROR]: This
+[2018-4-2 22:31:1][WARNING]: Should
+[2018-4-2 22:31:1][INFO]: Be working

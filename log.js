@@ -208,6 +208,7 @@ class Log
                         return console.log(err);
                 });
             }
+
             if  //  Log to database
             (
                 this.m_LogMode === this.Mode["ModeDatabase"]||
@@ -217,6 +218,7 @@ class Log
             )
             {
                 var Level = this.Level
+
                 MongoClient.connect("mongodb://localhost:27017/logs", function(err, db) {
                     if (err) throw err;
                     var dbo = db.db("logs");
@@ -249,7 +251,7 @@ class Log
                         });
                     }
                     
-                    else if (messageLevel === Level["LevelError"])
+                    else if (messageLevel === Level["LevelInfo"])
                     {
                         dbo.createCollection("Info", function(err, res) {
                             if (err) throw err;
