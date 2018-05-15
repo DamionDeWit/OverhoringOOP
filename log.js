@@ -19,7 +19,11 @@ class Log
         {
             ModeConsole: 0,
             ModeFile: 1,
-            ModeDatabase: 2
+            ModeDatabase: 2,
+            ModeCF: 3,
+            ModeCD: 4,
+            ModeFD: 5,
+            ModeCFD: 6
         }
 
         this.LogLevel = this.Level["LevelInfo"];
@@ -66,16 +70,59 @@ class Log
     SetMode(mode)
     {
         var msg = "Log Mode set to ";
-        if      (mode === "Console")
+        if      
+        (
+            mode === "Console" ||
+            mode === "C"
+        )
             this.LogMode = this.Mode["ModeConsole"];
-        else if (mode === "File")
+
+        else if
+        (
+            mode === "File" ||
+            mode === "F"
+        )
             this.LogMode = this.Mode["ModeFile"];
-        else if (mode === "Database")
+
+        else if
+        (
+            mode === "Database" ||
+            mode === "D"
+        )
             this.LogMode = this.Mode["ModeDatabase"];
+
+        else if 
+        (
+            mode === "ConsoleFile" ||
+            mode === "CF"  || mode === "FC"
+        )
+            this.Logmode = this.Mode["ModeCF"];
+
+        else if
+        (
+            mode === "ConsoleDatabase" ||
+            mode === "CD"  || mode === "DC"
+        )
+            this.LogMode = this.Mode["ModeCD"];
+
+        else if
+        (
+            mode === "FileDatabase" ||
+            mode === "FD"  || mode === "DF"
+        )
+            this.LogMode = this.Mode["ModeFD"];        
+        else if
+        (
+            mode === "ConsoleFileDatabase"   ||
+            mode === "CFD" || mode === "CDF" ||
+            mode === "FCD" || mode === "FDC" ||
+            mode === "DCF" || mode === "DFC"  
+        )
+            this.LogMode = this.Mode["ModeCFD"];        
 
         else
         {
-            console.log(mode + " is not a valid mode (Console/File/Database)")
+            console.log(mode + " is not a valid mode (Console/File/Database/C(onsole)F(ile)/C(onsole)D(atabase)/F(ile)D(atabase)/C(onsole)F(ile)D(atabase))");
             return;
         }
 
