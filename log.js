@@ -26,20 +26,20 @@ class Log
             ModeCFD: 6
         }
 
-        this.LogLevel = this.Level["LevelInfo"];
-        this.LogFormat = this.Format["FormatLong"];
-        this.LogMode = this.Mode["ModeConsole"];
+        this.m_LogLevel = this.Level["LevelInfo"];
+        this.m_LogFormat = this.Format["FormatLong"];
+        this.m_LogMode = this.Mode["ModeConsole"];
     }
 
     SetLevel(level)
     {
         var msg = "Log Level set to ";
         if      (level === "Error")
-            this.LogLevel = this.Level["LevelError"];
+            this.m_LogLevel = this.Level["LevelError"];
         else if (level === "Warning")
-            this.LogLevel = this.Level["LevelWarning"];
+            this.m_LogLevel = this.Level["LevelWarning"];
         else if (level === "Info")
-            this.LogLevel = this.Level["LevelInfo"];
+            this.m_LogLevel = this.Level["LevelInfo"];
         
         else
         {
@@ -59,14 +59,14 @@ class Log
             FORMAT === "COMPACT" ||
             FORMAT === "C"
         )
-            this.LogFormat = this.Format["FormatCompact"];
+            this.m_LogFormat = this.Format["FormatCompact"];
         
         else if
         (
             FORMAT === "LONG" ||
             FORMAT === "L"
         )
-            this.LogFormat = this.Format["FormatLong"];
+            this.m_LogFormat = this.Format["FormatLong"];
 
         else
         {
@@ -86,42 +86,42 @@ class Log
             MODE === "CONSOLE" ||
             MODE === "C"
         )
-            this.LogMode = this.Mode["ModeConsole"];
+            this.m_LogMode = this.Mode["ModeConsole"];
 
         else if
         (
             MODE === "FILE" ||
             MODE === "F"
         )
-            this.LogMode = this.Mode["ModeFile"];
+            this.m_LogMode = this.Mode["ModeFile"];
 
         else if
         (
             MODE === "DATABASE" ||
             MODE === "D"
         )
-            this.LogMode = this.Mode["ModeDatabase"];
+            this.m_LogMode = this.Mode["ModeDatabase"];
 
         else if 
         (
             MODE === "CONSOLEFILE" ||
             MODE === "CF"  || MODE === "FC"
         )
-            this.LogMode = this.Mode["ModeCF"];
+            this.m_LogMode = this.Mode["ModeCF"];
 
         else if
         (
             MODE === "CONSOLEDATABASE" ||
             MODE === "CD"  || MODE === "DC"
         )
-            this.LogMode = this.Mode["ModeCD"];
+            this.m_LogMode = this.Mode["ModeCD"];
 
         else if
         (
             MODE === "FILEDATABASE" ||
             MODE === "FD"  || MODE === "DF"
         )
-            this.LogMode = this.Mode["ModeFD"];        
+            this.m_LogMode = this.Mode["ModeFD"];        
         else if
         (
             MODE === "CONSOLEFILEDATABASE"   ||
@@ -129,7 +129,7 @@ class Log
             MODE === "FCD" || MODE === "FDC" ||
             MODE === "DCF" || MODE === "DFC"  
         )
-            this.LogMode = this.Mode["ModeCFD"];        
+            this.m_LogMode = this.Mode["ModeCFD"];        
 
         else
         {
@@ -144,7 +144,7 @@ class Log
     {
         var d = new Date();
         var timestamp = "";
-        if(this.LogFormat === this.Format["FormatLong"])
+        if(this.m_LogFormat === this.Format["FormatLong"])
         {
             timestamp +=
             "[" + d.getFullYear() + "-"  + d.getMonth() + "-" + d.getDay() + " " +
@@ -153,14 +153,14 @@ class Log
 
         var log = timestamp + "[INFO]: " + message;
 
-        if(this.LogLevel >= this.Level["LevelError"])
+        if(this.m_LogLevel >= this.Level["LevelError"])
         {
             if  //  Log to the console
             (
-                this.LogMode === this.Mode["ModeConsole"]   ||
-                this.LogMode === this.Mode["ModeCF"]        ||
-                this.LogMode === this.Mode["ModeCD"]        ||
-                this.LogMode === this.Mode["ModeCFD"]
+                this.m_LogMode === this.Mode["ModeConsole"]   ||
+                this.m_LogMode === this.Mode["ModeCF"]        ||
+                this.m_LogMode === this.Mode["ModeCD"]        ||
+                this.m_LogMode === this.Mode["ModeCFD"]
             )
                 console.log( log );
         }
@@ -171,7 +171,7 @@ class Log
     {
         var d = new Date();
         var timestamp = "";
-        if(this.LogFormat === this.Format["FormatLong"])
+        if(this.m_LogFormat === this.Format["FormatLong"])
         {
             timestamp +=
             "[" + d.getFullYear() + "-"  + d.getMonth() + "-" + d.getDay() + " " +
@@ -180,14 +180,14 @@ class Log
 
         var log = timestamp + "[INFO]: " + message;
 
-        if(this.LogLevel >= this.Level["LevelWarning"])
+        if(this.m_LogLevel >= this.Level["LevelWarning"])
         {
             if  //  Log to the console
             (
-                this.LogMode === this.Mode["ModeConsole"]   ||
-                this.LogMode === this.Mode["ModeCF"]        ||
-                this.LogMode === this.Mode["ModeCD"]        ||
-                this.LogMode === this.Mode["ModeCFD"]
+                this.m_LogMode === this.Mode["ModeConsole"]   ||
+                this.m_LogMode === this.Mode["ModeCF"]        ||
+                this.m_LogMode === this.Mode["ModeCD"]        ||
+                this.m_LogMode === this.Mode["ModeCFD"]
             )
                 console.log( log );
         }    
@@ -198,7 +198,7 @@ class Log
         var d = new Date();
         
         var timestamp = "";
-        if(this.LogFormat === this.Format["FormatLong"])
+        if(this.m_LogFormat === this.Format["FormatLong"])
         {
             timestamp +=
             "[" + d.getFullYear() + "-"  + d.getMonth() + "-" + d.getDay() + " " +
@@ -207,14 +207,14 @@ class Log
 
         var log = timestamp + "[INFO]: " + message;
 
-        if(this.LogLevel >= this.Level["LevelInfo"])
+        if(this.m_LogLevel >= this.Level["LevelInfo"])
         {
             if  // Log to the console
             (
-                this.LogMode === this.Mode["ModeConsole"]   ||
-                this.LogMode === this.Mode["ModeCF"]        ||
-                this.LogMode === this.Mode["ModeCD"]        ||
-                this.LogMode === this.Mode["ModeCFD"]
+                this.m_LogMode === this.Mode["ModeConsole"]   ||
+                this.m_LogMode === this.Mode["ModeCF"]        ||
+                this.m_LogMode === this.Mode["ModeCD"]        ||
+                this.m_LogMode === this.Mode["ModeCFD"]
             )
                 console.log( log );
 
