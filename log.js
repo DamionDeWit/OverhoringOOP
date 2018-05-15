@@ -42,23 +42,30 @@ class Log
             console.log(level + " is not a valid level (Error/Warning/Info)");
             return;
         }
-        
+
         console.log(msg + level);
     }
     
     SetFormat(format)
     {
+        var msg = "Log Format set to ";        
         if      (format === "Compact")
             this.LogFormat = this.Format["FormatCompact"];
         else if (format === "Long")
             this.LogFormat = this.Format["FormatLong"];
 
         else
+        {
             console.log(format + " is not a valid format (Compact/Long)");
+            return;
+        }
+
+        console.log(msg + format);
     }
 
     SetMode(mode)
     {
+        var msg = "Log Mode set to ";
         if      (mode === "Console")
             this.LogMode = this.Mode["ModeConsole"];
         else if (mode === "File")
@@ -67,7 +74,12 @@ class Log
             this.LogMode = this.Mode["ModeDatabase"];
 
         else
+        {
             console.log(mode + " is not a valid mode (Console/File/Database)")
+            return;
+        }
+
+        console.log(msg + mode);
     }
 
     Error(message)
@@ -117,6 +129,5 @@ class Log
     }
 
 }
-
 
 module.exports = Log;
