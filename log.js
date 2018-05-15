@@ -1,4 +1,5 @@
 var fs = require('fs');
+var MongoClient = require('mongodb').MongoClient;
 
 class Log
 {
@@ -215,7 +216,53 @@ class Log
                 this.m_LogMode === this.Mode["ModeCFD"]                
             )
             {
-                console.log("W.I.P.");
+                var Level = this.Level
+                MongoClient.connect("mongodb://localhost:27017/logs", function(err, db) {
+                    if (err) throw err;
+                    var dbo = db.db("logs");
+
+                    if (messageLevel === Level["LevelError"])
+                    {
+                        dbo.createCollection("Errors", function(err, res) {
+                            if (err) throw err;
+                            console.log("Collection created!");
+                            var logObj = {Timestamp: timestamp, Message: message};
+                            dbo.collection("Errors").insertOne(logObj, function(err, res) {
+                                if (err) throw err;
+                                console.log("Error inserted");
+                                db.close();
+                              });
+                          });
+                    }
+                    
+                    else if (messageLevel === Level["LevelWarning"])
+                    {
+                        dbo.createCollection("Warnings", function(err, res) {
+                            if (err) throw err;
+                            console.log("Collection created!");
+                            var logObj = {Timestamp: timestamp, Message: message};                            
+                            dbo.collection("Warnings").insertOne(logObj, function(err, res) {
+                                if (err) throw err;
+                                console.log("Warning inserted");
+                                db.close();
+                              });
+                        });
+                    }
+                    
+                    else if (messageLevel === Level["LevelError"])
+                    {
+                        dbo.createCollection("Info", function(err, res) {
+                            if (err) throw err;
+                            console.log("Collection created!");
+                            var logObj = {Timestamp: timestamp, Message: message};
+                            dbo.collection("Info").insertOne(logObj, function(err, res) {
+                                if (err) throw err;
+                                console.log("Info inserted");
+                                db.close();
+                              });                                   
+                        });
+                    }
+                });
 
             }
 

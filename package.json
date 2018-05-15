@@ -10,10 +10,13 @@
     "type": "git",
     "url": "git+https://github.com/DamionDeWit/OverhoringOOP.git"
   },
-  "author": "",
+  "author": "Damion de Wit",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/DamionDeWit/OverhoringOOP/issues"
   },
-  "homepage": "https://github.com/DamionDeWit/OverhoringOOP#readme"
+  "homepage": "https://github.com/DamionDeWit/OverhoringOOP#readme",
+  "dependencies": {
+    "mongodb": "^3.1.0-beta4"
+  }
 }
