@@ -2,25 +2,34 @@ class Log
 {
     constructor()
     {
-        this.Level =
+        this.Level =        //  Pseudo Enum
         {
             LevelError: 0,
             LevelWarning: 1,
             LevelInfo: 2
         }
 
-        this.Format = 
+        this.Format =       //  Pseudo Enum
         {
             FormatCompact: 0,
             FormatLong: 1
         }
 
+        this.Mode =         //  Pseudo Enum
+        {
+            ModeConsole: 0,
+            ModeFile: 1,
+            ModeDatabase: 2
+        }
+
         this.LogLevel = this.Level["LevelInfo"];
         this.LogFormat = this.Format["FormatLong"];
+        this.LogMode = this.Mode["ModeConsole"];
     }
 
     SetLevel(level)
     {
+        var msg = "Log Level set to ";
         if      (level === "Error")
             this.LogLevel = this.Level["LevelError"];
         else if (level === "Warning")
@@ -29,9 +38,14 @@ class Log
             this.LogLevel = this.Level["LevelInfo"];
         
         else
+        {
             console.log(level + " is not a valid level (Error/Warning/Info)");
+            return;
+        }
+        
+        console.log(msg + level);
     }
-
+    
     SetFormat(format)
     {
         if      (format === "Compact")
@@ -40,7 +54,20 @@ class Log
             this.LogFormat = this.Format["FormatLong"];
 
         else
-            console.log(format + " Is not a valid format (Compact/Long)");
+            console.log(format + " is not a valid format (Compact/Long)");
+    }
+
+    SetMode(mode)
+    {
+        if      (mode === "Console")
+            this.LogMode = this.Mode["ModeConsole"];
+        else if (mode === "File")
+            this.LogMode = this.Mode["ModeFile"];
+        else if (mode === "Database")
+            this.LogMode = this.Mode["ModeDatabase"];
+
+        else
+            console.log(mode + " is not a valid mode (Console/File/Database)")
     }
 
     Error(message)
