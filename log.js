@@ -69,54 +69,55 @@ class Log
 
     SetMode(mode)
     {
+        MODE = String(mode).toUpperCase;
         var msg = "Log Mode set to ";
         if      
         (
-            mode === "Console" ||
-            mode === "C"
+            MODE === "CONSOLE" ||
+            MODE === "C"
         )
             this.LogMode = this.Mode["ModeConsole"];
 
         else if
         (
-            mode === "File" ||
-            mode === "F"
+            MODE === "FILE" ||
+            MODE === "F"
         )
             this.LogMode = this.Mode["ModeFile"];
 
         else if
         (
-            mode === "Database" ||
-            mode === "D"
+            MODE === "DATABASE" ||
+            MODE === "D"
         )
             this.LogMode = this.Mode["ModeDatabase"];
 
         else if 
         (
-            mode === "ConsoleFile" ||
-            mode === "CF"  || mode === "FC"
+            MODE === "ConsoleFile" ||
+            MODE === "CF"  || mode === "FC"
         )
             this.Logmode = this.Mode["ModeCF"];
 
         else if
         (
-            mode === "ConsoleDatabase" ||
-            mode === "CD"  || mode === "DC"
+            MODE === "ConsoleDatabase" ||
+            MODE === "CD"  || MODE === "DC"
         )
             this.LogMode = this.Mode["ModeCD"];
 
         else if
         (
-            mode === "FileDatabase" ||
-            mode === "FD"  || mode === "DF"
+            MODE === "FileDatabase" ||
+            MODE === "FD"  || MODE === "DF"
         )
             this.LogMode = this.Mode["ModeFD"];        
         else if
         (
-            mode === "ConsoleFileDatabase"   ||
-            mode === "CFD" || mode === "CDF" ||
-            mode === "FCD" || mode === "FDC" ||
-            mode === "DCF" || mode === "DFC"  
+            MODE === "ConsoleFileDatabase"   ||
+            MODE === "CFD" || MODE === "CDF" ||
+            MODE === "FCD" || MODE === "FDC" ||
+            MODE === "DCF" || MODE === "DFC"  
         )
             this.LogMode = this.Mode["ModeCFD"];        
 
