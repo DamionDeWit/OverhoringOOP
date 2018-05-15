@@ -26,6 +26,7 @@ class Log
             ModeCFD: 6
         }
 
+        //  Private member variables
         this.m_LogLevel = this.Level["LevelInfo"];
         this.m_LogFormat = this.Format["FormatLong"];
         this.m_LogMode = this.Mode["ModeConsole"];
@@ -178,14 +179,32 @@ class Log
 
         if(this.m_LogLevel >= messageLevel)
         {
-            if  // Log to the console
+            if  //  Log to console
             (
-                this.m_LogMode === this.Mode["ModeConsole"]   ||
-                this.m_LogMode === this.Mode["ModeCF"]        ||
-                this.m_LogMode === this.Mode["ModeCD"]        ||
+                this.m_LogMode === this.Mode["ModeConsole"] ||
+                this.m_LogMode === this.Mode["ModeCF"]      ||
+                this.m_LogMode === this.Mode["ModeCD"]      ||
                 this.m_LogMode === this.Mode["ModeCFD"]
             )
                 console.log( log );
+
+            if  //  Log to file
+            (
+                this.m_LogMode === this.Mode["ModeFile"]    ||
+                this.m_LogMode === this.Mode["ModeCF"]      ||
+                this.m_LogMode === this.Mode["ModeFD"]      ||
+                this.m_LogMode === this.Mode["ModeCFD"]                
+            )
+                console.log("W.I.P.");
+            
+            if  //  Log to database
+            (
+                this.m_LogMode === this.Mode["ModeDatabase"]||
+                this.m_LogMode === this.Mode["ModeCD"]      ||
+                this.m_LogMode === this.Mode["ModeFD"]      ||
+                this.m_LogMode === this.Mode["ModeCFD"]                
+            )
+                console.log("W.I.P.");
 
         }   
     }
