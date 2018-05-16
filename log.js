@@ -48,6 +48,7 @@ class Log
          * 
          * returns: console.log message for user
          */
+        
         var LEVEL = String(level).toUpperCase();
         var msg = "Log Level set to ";
         if          //  Level = Error
