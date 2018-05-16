@@ -39,19 +39,31 @@ class Log
 
     SetLevel(level)
     {
+        var LEVEL = String(level).toUpperCase();
         var msg = "Log Level set to ";
-        if      (level === "Error")
+        if
+        (
+            LEVEL === "ERROR"   ||
+            LEVEL === "E"
+        )
             this.m_LogLevel = this.Level["LevelError"];
-        else if (level === "Warning")
+
+        else if
+        (
+            LEVEL === "WARNING" ||
+            LEVEL === "W"
+        )
             this.m_LogLevel = this.Level["LevelWarning"];
-        else if (level === "Info")
+
+        else if
+        (
+            LEVEL === "INFO"    ||
+            LEVEL === "I"
+        )
             this.m_LogLevel = this.Level["LevelInfo"];
         
         else
-        {
-            console.log(level + " is not a valid level (Error/Warning/Info)");
-            return;
-        }
+            return console.log(level + " is not a valid level ((E)rror/(W)arning/(I)nfo)");
 
         console.log(msg + level);
     }
@@ -227,7 +239,6 @@ class Log
                     {
                         dbo.createCollection("Errors", function(err, res) {
                             if (err) throw err;
-                            console.log("Collection created!");
                             var logObj = {Timestamp: timestamp, Message: message};
                             dbo.collection("Errors").insertOne(logObj, function(err, res) {
                                 if (err) throw err;
@@ -241,7 +252,6 @@ class Log
                     {
                         dbo.createCollection("Warnings", function(err, res) {
                             if (err) throw err;
-                            console.log("Collection created!");
                             var logObj = {Timestamp: timestamp, Message: message};                            
                             dbo.collection("Warnings").insertOne(logObj, function(err, res) {
                                 if (err) throw err;
@@ -255,7 +265,6 @@ class Log
                     {
                         dbo.createCollection("Info", function(err, res) {
                             if (err) throw err;
-                            console.log("Collection created!");
                             var logObj = {Timestamp: timestamp, Message: message};
                             dbo.collection("Info").insertOne(logObj, function(err, res) {
                                 if (err) throw err;
@@ -264,6 +273,7 @@ class Log
                               });                                   
                         });
                     }
+
                 });
 
             }

@@ -4,3 +4,18 @@
 [2018-4-2 22:31:1][ERROR]: This
 [2018-4-2 22:31:1][WARNING]: Should
 [2018-4-2 22:31:1][INFO]: Be working
+[ERROR]: This
+[WARNING]: Should
+[INFO]: Be working
+[ERROR]: This
+[WARNING]: Should
+[INFO]: Be working
+[ERROR]: This
+[WARNING]: Should
+[INFO]: Be working
+[ERROR]: This
+[WARNING]: Should
+[INFO]: Be working
+[ERROR]: This
+[WARNING]: Should
+[INFO]: Be working
