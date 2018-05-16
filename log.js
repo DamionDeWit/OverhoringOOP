@@ -62,7 +62,7 @@ class Log
         )
             this.m_LogLevel = this.Level["LevelInfo"];
         
-        else
+        else        //  Invalid Level
             return console.log(level + " is not a valid level ((E)rror/(W)arning/(I)nfo)");
 
         console.log(msg + level);
@@ -72,25 +72,23 @@ class Log
     {
         var FORMAT = String(format).toUpperCase();
         var msg = "Log Format set to ";
-        if
+
+        if      //  Format = Compact
         (
             FORMAT === "COMPACT" ||
             FORMAT === "C"
         )
             this.m_LogFormat = this.Format["FormatCompact"];
         
-        else if
+        else if //  Format = Long
         (
             FORMAT === "LONG" ||
             FORMAT === "L"
         )
             this.m_LogFormat = this.Format["FormatLong"];
 
-        else
-        {
-            console.log(format + " is not a valid format (Compact/Long)");
-            return;
-        }
+        else    //  Invalid Format
+            return console.log(format + " is not a valid format (Compact/Long)");
 
         console.log(msg + format);
     }
@@ -99,48 +97,50 @@ class Log
     {
         var MODE = String(mode).toUpperCase();
         var msg = "Log Mode set to ";
-        if      
+
+        if      //  Mode = Console      
         (
             MODE === "CONSOLE" ||
             MODE === "C"
         )
             this.m_LogMode = this.Mode["ModeConsole"];
 
-        else if
+        else if // Mode = File
         (
             MODE === "FILE" ||
             MODE === "F"
         )
             this.m_LogMode = this.Mode["ModeFile"];
 
-        else if
+        else if // Mode = Database
         (
             MODE === "DATABASE" ||
             MODE === "D"
         )
             this.m_LogMode = this.Mode["ModeDatabase"];
 
-        else if 
+        else if //  Mode = Console & File
         (
             MODE === "CONSOLEFILE" ||
             MODE === "CF"  || MODE === "FC"
         )
             this.m_LogMode = this.Mode["ModeCF"];
 
-        else if
+        else if //  Mode = Console & Database
         (
             MODE === "CONSOLEDATABASE" ||
             MODE === "CD"  || MODE === "DC"
         )
             this.m_LogMode = this.Mode["ModeCD"];
 
-        else if
+        else if //  Mode = File & Database
         (
             MODE === "FILEDATABASE" ||
             MODE === "FD"  || MODE === "DF"
         )
-            this.m_LogMode = this.Mode["ModeFD"];        
-        else if
+            this.m_LogMode = this.Mode["ModeFD"];
+
+        else if //  Mode = Console & File & Database 
         (
             MODE === "CONSOLEFILEDATABASE"   ||
             MODE === "CFD" || MODE === "CDF" ||
@@ -149,7 +149,7 @@ class Log
         )
             this.m_LogMode = this.Mode["ModeCFD"];        
 
-        else
+        else    //  Invalid Mode
         {
             console.log(mode + " is not a valid mode ((C)onsole/(F)ile/(D)atabase or combination)");
             return;
