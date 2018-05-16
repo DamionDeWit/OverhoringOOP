@@ -181,11 +181,9 @@ class Log
         
         var timestamp = "";
         if(this.m_LogFormat === this.Format["FormatLong"])
-        {
             timestamp +=
             "[" + d.getFullYear() + "-"  + d.getMonth() + "-" + d.getDay() + " " +
             d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds() + "]";
-        }
 
         //  Get the right log
         if (messageLevel === this.Level["LevelError"])
@@ -213,12 +211,9 @@ class Log
                 this.m_LogMode === this.Mode["ModeFD"]      ||
                 this.m_LogMode === this.Mode["ModeCFD"]                
             )
-            {
                 fs.appendFile(this.m_LogFile, log + '\n' , function(err){
-                    if (err)
-                        return console.log(err);
+                    if (err) return console.log(err);
                 });
-            }
 
             if  //  Log to database
             (
