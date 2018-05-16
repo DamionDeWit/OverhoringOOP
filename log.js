@@ -41,21 +41,21 @@ class Log
     {
         var LEVEL = String(level).toUpperCase();
         var msg = "Log Level set to ";
-        if
+        if          //  Level = Error
         (
             LEVEL === "ERROR"   ||
             LEVEL === "E"
         )
             this.m_LogLevel = this.Level["LevelError"];
 
-        else if
+        else if     //  Level = Warning
         (
             LEVEL === "WARNING" ||
             LEVEL === "W"
         )
             this.m_LogLevel = this.Level["LevelWarning"];
 
-        else if
+        else if     //  Level = Info
         (
             LEVEL === "INFO"    ||
             LEVEL === "I"
