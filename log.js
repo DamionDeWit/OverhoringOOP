@@ -174,6 +174,7 @@ class Log
     }
 
     //  Private
+
     _Log(message, messageLevel)
     {
         var d = new Date();
@@ -203,9 +204,7 @@ class Log
                 this.m_LogMode === this.Mode["ModeCD"]      ||
                 this.m_LogMode === this.Mode["ModeCFD"]
             )
-            {
                 console.log( log );
-            }
 
             if  //  Log to file
             (
@@ -279,8 +278,8 @@ class Log
             }
 
         }   
-    }
+    }   //  END _Log
 
-}
+}   //  END Class Log
 
 module.exports = Log;

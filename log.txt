@@ -19,3 +19,10 @@
 [ERROR]: This
 [WARNING]: Should
 [INFO]: Be working
+[ERROR]: This
+[WARNING]: Should
+[INFO]: Be working
+[ERROR]: This
+[WARNING]: Should
+[ERROR]: This
+[WARNING]: Should
