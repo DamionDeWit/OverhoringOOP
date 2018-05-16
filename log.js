@@ -39,6 +39,15 @@ class Log
 
     SetLevel(level)
     {
+        /*
+         * Method: Log.SetLevel
+         * --------------------
+         * Sets m_LogLevel
+         * 
+         * level: the level m_LogLevel should be set to
+         * 
+         * returns: console.log message for user
+         */
         var LEVEL = String(level).toUpperCase();
         var msg = "Log Level set to ";
         if          //  Level = Error
@@ -65,7 +74,7 @@ class Log
         else        //  Invalid Level
             return console.log(level + " is not a valid level ((E)rror/(W)arning/(I)nfo)");
 
-        console.log(msg + level);
+        return console.log(msg + level);
     }
     
     SetFormat(format)

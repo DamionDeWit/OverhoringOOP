@@ -30,3 +30,5 @@
 [WARNING]: Should
 [ERROR]: This
 [WARNING]: Should
+[ERROR]: This
+[WARNING]: Should
